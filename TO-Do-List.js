@@ -25,9 +25,11 @@ function AddTask(){
 listContainer.addEventListener('click', function(e){
     if (e.target.tagName === 'LI'){
         e.target.classList.toggle('checked');
+        saveData(); //This lets toggle's saved to local storage
     }
     else if ( e.target.tagName === 'SPAN'){
         e.target.parentElement.remove();
+        saveData(); //When click on X it removes data from the local storage too.
     }
 
 }, false);
@@ -39,4 +41,5 @@ function saveData(){
 function getData(){
     listContainer.innerHTML = localStorage.getItem('Data');
 }
+
 getData();
